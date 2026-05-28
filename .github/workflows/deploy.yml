@@ -35,7 +35,7 @@ jobs:
         # IMPORTANT: Replace YOUR_REPO_NAME with your actual repository name!
         run: |
           flutter build web \
-            --base-href "/Dental-Image_Segmentation-Flutter/" \
+            --base-href "/Dental-Image-Segmentation-Flutter/" \
             --dart-define=API_KEY="$SAFE_API_KEY"
 
       - name: Upload artifact
