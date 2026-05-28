@@ -1,11 +1,11 @@
 name: Deploy to GitHub Pages
 
 on:
-  # Runs on pushes targeting the default branch
+  # Trigger the workflow on push to the main branch
   push:
-    branches: [ main ] # Change to 'master' if your default branch is master
+    branches: [ main ] 
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+# Set permissions for the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
   contents: read
   pages: write
@@ -27,7 +27,16 @@ jobs:
         run: flutter pub get
 
       - name: Build Flutter Web
-        run: flutter build web --base-href "/Dental-Image-Segmentation-Flutter/"
+        # 1. Map the secret to a safe env variable to prevent '$' from breaking the bash script
+        env:
+          SAFE_API_KEY: ${{ secrets.API_KEY }}
+        
+        # 2. Build the web app, injecting the base href and the safe environment variable
+        # IMPORTANT: Replace YOUR_REPO_NAME with your actual repository name!
+        run: |
+          flutter build web \
+            --base-href "/Dental-Image_Segmentation-Flutter/" \
+            --dart-define=API_KEY="$SAFE_API_KEY"
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

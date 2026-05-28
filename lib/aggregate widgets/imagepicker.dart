@@ -41,7 +41,7 @@ class _ImagepickerState extends State<Imagepicker> {
     // 5. If they actually picked an image, update preview and provider
     if (pickedImage != null) {
       setState(() {
-        imageBytes = pickedImage.bytes;
+        imageBytes = pickedImage;
         _isSelected = true;
       });
     } else {

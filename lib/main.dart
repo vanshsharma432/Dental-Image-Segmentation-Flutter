@@ -5,7 +5,6 @@ import 'screens/home_screen.dart';
 import 'constants/theme.dart';
 import 'package:provider/provider.dart';
 import 'backend/providers.dart';
-import 'screens/documentation_screen.dart';
 
 void main() {
   runApp(const MainApp());
@@ -32,7 +31,6 @@ class MainApp extends StatelessWidget {
           '/': (context) => HomeScreen(),
           '/prediction': (context) => const PredictionScreen(),
           '/loading': (context) => LoadingScreen(),
-          '/documentation': (context) => DocumentationScreen(),
         },
       ),
     );
